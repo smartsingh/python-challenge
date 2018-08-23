@@ -64,3 +64,21 @@ print("Total: $" + str(revenue))
 print("Average Change: $" + str(avg_rev_delta))
 print("Greatest Increase in Profits: " + great_inc_month + " ($" + str(great_inc) +")")
 print("Greatest Decrease in Profits: " + great_dec_month + " ($" + str(great_dec) +")")
+
+#write financial analysis to text file
+
+writepath = os.path.join("Resources", "analysis.txt")
+
+with open(writepath, "w") as textfile:
+    textfile.write("Financial Analysis\n")
+    textfile.write("----------------------------\n")
+    textfile.write("Total Months: " + str(months_count))
+    textfile.write("\nTotal: $" + str(revenue))
+    textfile.write("\nAverage Change: $" + str(avg_rev_delta))
+    textfile.write("\nGreatest Increase in Profits: " + great_inc_month + " ($" + str(great_inc) +")")
+    textfile.write("\nGreatest Decrease in Profits: " + great_dec_month + " ($" + str(great_dec) +")")
+
+print(".")
+print(".")
+print(".")
+print("A text file has been created and stored in " + writepath + " for your convenience.")
