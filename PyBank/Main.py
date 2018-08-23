@@ -56,10 +56,11 @@ with open(csvpath, newline="") as csvfile:
         
     avg_rev_delta = round((change_sum / (months_count - 1)),2)
 
-print(months_count)
-print(revenue)
-print(avg_rev_delta)
-print(great_inc)
-print(great_inc_month)
-print(great_dec)
-print(great_dec_month)
+
+print("Financial Analysis")
+print("----------------------------")
+print("Total Months: " + str(months_count))
+print("Total: $" + str(revenue))
+print("Average Change: $" + str(avg_rev_delta))
+print("Greatest Increase in Profits: " + great_inc_month + " ($" + str(great_inc) +")")
+print("Greatest Decrease in Profits: " + great_dec_month + " ($" + str(great_dec) +")")
