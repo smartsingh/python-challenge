@@ -41,6 +41,16 @@ with open(csvpath, newline="") as csvfile:
 
         previous = int(row[1])
 
+        #find greatest increases/decreases and their months
+        if int(row[1]) > great_inc:
+            great_inc = int(row[1])
+            great_inc_month = row[0]
+        elif int(row[1]) < great_dec:
+            great_dec = int(row[1])
+            great_dec_month = row[0]
+        
+
+
     for row in range(1,len(changes)):
         change_sum += changes[row]
         
@@ -49,3 +59,7 @@ with open(csvpath, newline="") as csvfile:
 print(months_count)
 print(revenue)
 print(avg_rev_delta)
+print(great_inc)
+print(great_inc_month)
+print(great_dec)
+print(great_dec_month)
