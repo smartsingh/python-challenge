@@ -21,3 +21,50 @@ candi_list = results.index.tolist()
 
 #set winner to first name in list
 winner = candi_list[0]
+
+#grab votes to a list
+candi_votes = results["Candidate"].tolist()
+
+#create percentages for each candidate
+candi_perc = [(int(x)/int(count))*100 for x in candi_votes ]
+
+#format percentages
+candi_perc = [format(x, '.2f') for x in candi_perc]
+
+#results
+print("-------------------------")
+print("Election Results")
+print("-------------------------")
+print("Total Votes :" + str(count))
+print("-------------------------")
+
+#since we know that all the positions across all the lists come from the same data frame and the same order,
+#we can iterate over all three lists using the same integer for the place of each item and get the correct values
+for i in range(0,4):
+    print(candi_list[i]+ ": " + str(candi_perc[i]) + "% (" + str(candi_votes[i]) + ")")
+    
+#print winner
+print("-------------------------")
+print("Winner: " + winner)
+print("-------------------------")
+
+#write results to txt file
+writepath = os.path.join("Resources", "results.txt")
+
+with open(writepath, "w") as textfile:
+    textfile.write("-------------------------")
+    textfile.write("\nElection Results")
+    textfile.write("\n-------------------------")
+    textfile.write("\nTotal Votes :" + str(count))
+    textfile.write("\n-------------------------\n")
+    
+    for i in range(0,4):
+        textfile.write(candi_list[i]+ ": " + str(candi_perc[i]) + "% (" + str(candi_votes[i]) + ")\n")
+    textfile.write("-------------------------\n")
+    textfile.write("Winner: " + winner)
+    textfile.write("\n-------------------------")
+
+print(".")
+print(".")
+print(".")
+print("A text file has been created and stored in " + writepath + " for your convenience. Congratulaions " + winner + "!")
